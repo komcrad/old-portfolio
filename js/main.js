@@ -15,12 +15,16 @@ $(document).ready(function(){
 	$("#projects").click(function() {
 		load("html/projects.html");
 	});
-	$('#home').click();
+	if (getCookieValue("position") != undefined) {
+		load(getCookieValue("position"))
+	} else {
+		load("html/home.html");
+	}
 });
 
 function loadNav() {
 	$("#navbar").append("<a href='#home' id='home'>Home</a>");
-	$("#navbar").append('<a href="#projects" id="projects">My Projects</a>');
+	$("#navbar").append('<a href="#projects" id="projects">Projects</a>');
 }
 
 function load(pageToLoad, functionToExecuteAfterLoad) {
@@ -47,6 +51,11 @@ function createCookie(name, value, TOL) {
 	var expireDate = new Date();
 	expireDate.setDate(expireDate.getDate()+TOL);
 	document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + expireDate + ";";
+}
+
+function openiframe(URL) {
+	$("body").append("<iframe src='"+URL+"' style='position:absolute;width:100vw;height:95vh;top:3.6em;border:1px solid #dadada;'></iframe>");	
+	$("#navbar").append("<a href='' id='closeiframe' style='background-color: red;color:white;z-index:9'>X</a>");
 }
 
 function getCookieValue(name) {
