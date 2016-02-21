@@ -11,9 +11,11 @@ $(document).ready(function(){
 	loadNav();
 	$("#home").click(function() {
 		load("html/home.html");
+		deleteIFrame();
 	});
 	$("#projects").click(function() {
 		load("html/projects.html");
+		deleteIFrame();
 	});
 	if (getCookieValue("position") != undefined) {
 		load(getCookieValue("position"))
@@ -55,7 +57,6 @@ function createCookie(name, value, TOL) {
 
 function openiframe(URL) {
 	$("body").append("<iframe src='"+URL+"' style='position:absolute;width:100vw;height:95vh;top:3.6em;border:1px solid #dadada;'></iframe>");	
-	$("#navbar").append("<a href='' id='closeiframe' style='background-color: red;color:white;z-index:9'>X</a>");
 }
 
 function getCookieValue(name) {
@@ -83,4 +84,8 @@ function escapeHtml(string) {
     return String(string).replace(/[&<>"'\/]/g, function (s) {
       return entityMap[s];
     });
- }
+}
+
+function deleteIFrame() {
+	$("iframe").remove();
+}
