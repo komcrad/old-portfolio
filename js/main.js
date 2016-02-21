@@ -11,16 +11,22 @@ $(document).ready(function(){
 	loadNav();
 	$("#home").click(function() {
 		load("html/home.html");
+		deleteIFrame();
 	});
 	$("#projects").click(function() {
 		load("html/projects.html");
+		deleteIFrame();
 	});
-	$('#home').click();
+	if (getCookieValue("position") != undefined) {
+		load(getCookieValue("position"))
+	} else {
+		load("html/home.html");
+	}
 });
 
 function loadNav() {
 	$("#navbar").append("<a href='#home' id='home'>Home</a>");
-	$("#navbar").append('<a href="#projects" id="projects">My Projects</a>');
+	$("#navbar").append('<a href="#projects" id="projects">Projects</a>');
 }
 
 function load(pageToLoad, functionToExecuteAfterLoad) {
@@ -49,6 +55,10 @@ function createCookie(name, value, TOL) {
 	document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + expireDate + ";";
 }
 
+function openiframe(URL) {
+	$("body").append("<iframe src='"+URL+"' style='position:absolute;width:100vw;height:95vh;top:3.6em;border:1px solid #dadada;'></iframe>");	
+}
+
 function getCookieValue(name) {
 	var data = document.cookie.split(";");
 	for (i in data) {
@@ -74,4 +84,8 @@ function escapeHtml(string) {
     return String(string).replace(/[&<>"'\/]/g, function (s) {
       return entityMap[s];
     });
- }
+}
+
+function deleteIFrame() {
+	$("iframe").remove();
+}
