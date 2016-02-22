@@ -19,8 +19,10 @@
 }
 
 body {
+	min-height: 100vh;
 	margin-right: auto;
 	margin-left: auto;
+	position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -36,10 +38,9 @@ footer {
 	width: 100%;
 	background-color: #EBEBEB;
 	padding:2vh;
-}
-footer *{
-	display:inline-block;
-	margin-right: 2vw;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 .right {
@@ -115,6 +116,10 @@ td {
 
 .projectimage {
 	border: solid #dadada 1px;
+}
+
+.project {
+	margin-bottom: 4em;
 }
 
 input {
