@@ -36,11 +36,13 @@ p {
 footer {
 	text-align: right;
 	width: 100%;
-	background-color: #EBEBEB;
 	padding:2vh;
+	border-top: 1px solid #dadada;
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	background-color: white;
+	z-index:1;
 }
 
 .right {

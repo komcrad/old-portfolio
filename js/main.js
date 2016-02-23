@@ -56,7 +56,9 @@ function createCookie(name, value, TOL) {
 }
 
 function openiframe(URL) {
+	$("#swap").empty();
 	$("body").append("<iframe src='"+URL+"' style='position:absolute;width:100vw;height:95vh;top:3.6em;border:1px solid #dadada;'></iframe>");	
+	$('footer').hide();
 }
 
 function getCookieValue(name) {
@@ -88,4 +90,5 @@ function escapeHtml(string) {
 
 function deleteIFrame() {
 	$("iframe").remove();
+	$('footer').show();
 }
